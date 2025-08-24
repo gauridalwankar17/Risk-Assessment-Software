@@ -1,0 +1,47 @@
+# Mini Arabic Industrial Co-Pilot Configuration
+
+# OCR Configuration
+ocr:
+  engine: "easyocr"  # Options: "easyocr", "tesseract"
+  languages: ["ar", "en"]
+  confidence_threshold: 0.5
+  gpu: false
+
+# Translation Configuration
+translation:
+  model: "facebook/m2m100_418M"  # Options: "facebook/m2m100_418M", "facebook/nllb-200-distilled-600M"
+  source_lang: "ar"
+  target_lang: "en"
+  max_length: 512
+
+# Q&A System Configuration
+qa_system:
+  embedding_model: "intfloat/multilingual-e5-base"
+  chunk_size: 1000
+  chunk_overlap: 200
+  top_k: 5
+  similarity_threshold: 0.7
+
+# Forecasting Configuration
+forecasting:
+  seasonality_mode: "multiplicative"  # Options: "additive", "multiplicative"
+  changepoint_prior_scale: 0.05
+  seasonality_prior_scale: 10.0
+  holidays_prior_scale: 10.0
+
+# MLflow Configuration (Optional)
+mlflow:
+  tracking_uri: "sqlite:///mlflow.db"
+  experiment_name: "arabic_co_pilot"
+  log_models: true
+
+# Backend Configuration (Optional)
+backend:
+  host: "0.0.0.0"
+  port: 8000
+  debug: true
+
+# Frontend Configuration (Optional)
+frontend:
+  port: 8501
+  theme: "light"
